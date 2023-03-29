@@ -1,0 +1,35 @@
+*&---------------------------------------------------------------------*
+*& 2000 ile 3000 aras#nda 7'ye bölünebilen, 5'e bölünemeyen say#lar# ekrana yazd#ran program#n kodlar#.
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT z_while_ornek.
+
+* 2000 ile 3000 aras#nda 7'ye bölünebilen, 5'e bölünemeyen say#lar# ekrana yazd#ran program#n kodlar#.
+
+DATA gv_sayi TYPE i VALUE 2000.
+* gv_sayi de#i#keni veri tipi ve de#eriyle birlikte tan#mland#.
+DATA gv_control TYPE c.
+* gv_control de#i#kenini say#n#n 7'nin kat# olduktan sonra birer birer de#il yedi#er yedi#er art#rmas#n#n kontrolünü yapmas# için olu#turduk.
+
+WHILE gv_sayi <= 3000.
+* gv_sayi de#i#keni 3000 say#s#ndan küçük veya e#it oldu#u sürece döngüyü sürdür.
+  IF gv_sayi MOD 7 EQ 0 AND gv_sayi MOD 5 NE 0.
+* gv_sayi de#i#keninin 7'ye bölümünden kalan 0 ise ve 5'e bölümünden kalan 0 de#ilse a#a##daki i#lemi yap.
+    WRITE: /'Say# : ', gv_sayi, / 'Say# 7''ye bölünebilir ama 5''e bölünemez..'.
+* Ekrana say# ve bölüm bilgisi yaz#ld#.
+    gv_control = 7.
+* gv_control de#i#ken de#eri 7 yap#ld# çünkü bu a#amadan sonra say# yedi#er artacak ve döngü 7 kat h#zlanacak.
+    SKIP.
+* Bir sat#r bo#luk b#rak.
+  ENDIF.
+  IF gv_control = 7.
+* gv_control de#i#ken de#eri 7 ise a#a##daki i#lemi yap.
+    ADD 7 TO gv_sayi.
+* say#y# 7 art#r.
+  ELSE.
+* gv_control de#i#ken de#eri 7 de#il ise a#a##daki i#lemi yap.
+    ADD 1 TO gv_sayi.
+* say#y# 1 art#r.
+  ENDIF.
+ENDWHILE.
