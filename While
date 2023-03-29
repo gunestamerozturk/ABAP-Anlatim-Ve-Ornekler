@@ -1,35 +1,35 @@
 *&---------------------------------------------------------------------*
-*& 2000 ile 3000 aras#nda 7'ye b�l�nebilen, 5'e b�l�nemeyen say#lar# ekrana yazd#ran program#n kodlar#.
+*& 2000 ile 3000 aras#nda 7'ye bölünebilen, 5'e bölünemeyen sayıları ekrana yazdıran programın kodları.
 *&---------------------------------------------------------------------*
 *&
 *&---------------------------------------------------------------------*
 REPORT z_while_ornek.
 
-* 2000 ile 3000 aras#nda 7'ye b�l�nebilen, 5'e b�l�nemeyen say#lar# ekrana yazd#ran program#n kodlar#.
+* 2000 ile 3000 aras#nda 7'ye bölünebilen, 5'e bölünemeyen sayıları ekrana yazdıran programın kodları.
 
 DATA gv_sayi TYPE i VALUE 2000.
-* gv_sayi de#i#keni veri tipi ve de#eriyle birlikte tan#mland#.
+* gv_sayi değişkeni veri tipi ve değeriyle birlikte tanımlandı.
 DATA gv_control TYPE c.
-* gv_control de#i#kenini say#n#n 7'nin kat# olduktan sonra birer birer de#il yedi#er yedi#er art#rmas#n#n kontrol�n� yapmas# i�in olu#turduk.
+* gv_control değişkenini sayının 7'nin katı olduktan sonra birer birer değil yedişer yedişer artırmasının kontrolünü yapması için oluşturduk.
 
 WHILE gv_sayi <= 3000.
-* gv_sayi de#i#keni 3000 say#s#ndan k���k veya e#it oldu#u s�rece d�ng�y� s�rd�r.
+* gv_sayi değişkeni 3000 sayısından küçük veya eşit olduu sürece döngüyü sürdür.
   IF gv_sayi MOD 7 EQ 0 AND gv_sayi MOD 5 NE 0.
-* gv_sayi de#i#keninin 7'ye b�l�m�nden kalan 0 ise ve 5'e b�l�m�nden kalan 0 de#ilse a#a##daki i#lemi yap.
-    WRITE: /'Say# : ', gv_sayi, / 'Say# 7''ye b�l�nebilir ama 5''e b�l�nemez..'.
-* Ekrana say# ve b�l�m bilgisi yaz#ld#.
+* gv_sayi değişkeninin 7'ye bölümünden kalan 0 ise ve 5'e bölümünden kalan 0 değilse aşağıdaki işlemi yap.
+    WRITE: /'Sayı : ', gv_sayi, / 'Sayı 7''ye bölünebilir ama 5''e bölünemez..'.
+* Ekrana sayı ve bölüm bilgisi yazıldı.
     gv_control = 7.
-* gv_control de#i#ken de#eri 7 yap#ld# ��nk� bu a#amadan sonra say# yedi#er artacak ve d�ng� 7 kat h#zlanacak.
+* gv_control değişken değeri 7 yapıldı çünkü bu aşamadan sonra sayı yedişer artacak ve döngü 7 kat hızlanacak.
     SKIP.
-* Bir sat#r bo#luk b#rak.
+* Bir sat#r boşluk b#rak.
   ENDIF.
   IF gv_control = 7.
-* gv_control de#i#ken de#eri 7 ise a#a##daki i#lemi yap.
+* gv_control değişken değeri 7 ise aşağıdaki işlemi yap.
     ADD 7 TO gv_sayi.
 * say#y# 7 art#r.
   ELSE.
-* gv_control de#i#ken de#eri 7 de#il ise a#a##daki i#lemi yap.
+* gv_control değişken değeri 7 değil ise aşağıdaki iilemi yap.
     ADD 1 TO gv_sayi.
-* say#y# 1 art#r.
+* sayıyı 1 artır.
   ENDIF.
 ENDWHILE.
