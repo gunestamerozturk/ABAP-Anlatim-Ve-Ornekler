@@ -44,7 +44,7 @@ gv_sonuc = 1.
 *Yukarıda değişken tanımları ile ilk örnekteki işlemin karışmaması için sonucu tekrar 1'e aldık.
 
 DO gp_sayi TIMES.
-* gp_sayi de#eri kadar döngüye gir ve aşağıdaki işlemi yap.
+* gp_sayi değeri kadar döngüye gir ve aşağıdaki işlemi yap.
 gv_sonuc = gv_sonuc * sy-index.
 * sonuc ile index sayısını çarp. (index sayısı 1'den döngüdeki işlem sayısı kadar olacağı için sayaç ile aynı mantıkta çalışacaktır.)
 ENDDO.
