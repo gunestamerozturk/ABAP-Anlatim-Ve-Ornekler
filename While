@@ -1,11 +1,11 @@
 *&---------------------------------------------------------------------*
-*& 2000 ile 3000 aras#nda 7'ye bölünebilen, 5'e bölünemeyen sayıları ekrana yazdıran programın kodları.
+*& 2000 ile 3000 arasında 7'ye bölünebilen, 5'e bölünemeyen sayıları ekrana yazdıran programın kodları.
 *&---------------------------------------------------------------------*
 *&
 *&---------------------------------------------------------------------*
 REPORT z_while_ornek.
 
-* 2000 ile 3000 aras#nda 7'ye bölünebilen, 5'e bölünemeyen sayıları ekrana yazdıran programın kodları.
+* 2000 ile 3000 arasında 7'ye bölünebilen, 5'e bölünemeyen sayıları ekrana yazdıran programın kodları.
 
 DATA gv_sayi TYPE i VALUE 2000.
 * gv_sayi değişkeni veri tipi ve değeriyle birlikte tanımlandı.
@@ -21,12 +21,12 @@ WHILE gv_sayi <= 3000.
     gv_control = 7.
 * gv_control değişken değeri 7 yapıldı çünkü bu aşamadan sonra sayı yedişer artacak ve döngü 7 kat hızlanacak.
     SKIP.
-* Bir sat#r boşluk b#rak.
+* Bir satır boşluk bırak.
   ENDIF.
   IF gv_control = 7.
 * gv_control değişken değeri 7 ise aşağıdaki işlemi yap.
     ADD 7 TO gv_sayi.
-* say#y# 7 art#r.
+* sayıyı 7 artır.
   ELSE.
 * gv_control değişken değeri 7 değil ise aşağıdaki iilemi yap.
     ADD 1 TO gv_sayi.
