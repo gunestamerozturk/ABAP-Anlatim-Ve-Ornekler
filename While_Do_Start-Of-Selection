@@ -1,53 +1,53 @@
 *&---------------------------------------------------------------------*
 *& Report Z_FAKTORIYEL
 *&---------------------------------------------------------------------*
-*& Verilen say#n#n Fakt�riyelini yazan program kodlar#.
+*& Verilen sayının Faktöriyelini yazan program kodları.
 *&---------------------------------------------------------------------*
 REPORT Z_FAKTORIYEL.
 
 PARAMETERS: gp_sayi TYPE i.
-* Kullan#c#dan fakt�riyel hesaplamas# yap#lacak say# giri#i yapmas# i�in parametre tan#mlad#k.
+* Kullanıcıdan faktöriyel hesaplaması yapılacak sayı girişi yapması için parametre tanımladık.
 
 DATA: gv_sayac TYPE i VALUE 1,
       gv_sonuc TYPE i VALUE 1.
-* 1'den N'ye kadar olan say#lar#n �arp#m# i�in saya� ve sonu� de#i#kenleri tan#mlad#k.
-* 1'den N'ye kadar �arp#laca## i�in de#erlerini 1 olarak belirledik.
+* 1'den N'ye kadar olan sayıların çarpımı için sayaç ve sonuç değişkenleri tanımladık.
+* 1'den N'ye kadar çarpılacağı için değerlerini 1 olarak belirledik.
 
 WHILE gv_sayac <= gp_sayi.
-* 1'den N'ye kadar olan say#lar#n �arp#m# i�in saya� de#eri gv_sayi de#erine e#it olana kadar a#a##daki i#lemi yap.
+* 1'den N'ye kadar olan sayıların çarpımı için sayaç değeri gv_sayi değerine eşit olana kadar aşağıdaki işlemi yap.
 gv_sonuc = gv_sonuc * gv_sayac.
 ADD 1 TO gv_sayac.
 ENDWHILE.
 
-WRITE: gp_sayi, 'Fakt�riyelin sonucu : ', gv_sonuc.
-* Say# ve i#lem sonucunu ekrana yaz.
+WRITE: gp_sayi, 'Faktöriyelin sonucu : ', gv_sonuc.
+* Sayı ve işlem sonucunu ekrana yaz.
 
 SKIP.
 ULINE.
 SKIP.
-* Bir sat#r bo#luk, bir sat#r �izgi ve bir sat#r bo#luk b#rak.
+* Bir satır boşluk, bir satır çizgi ve bir satır boşluk bırak.
 
-* Sait ORHAN'#n Udemy Platformundaki dersinde vermi# oldu#u �rnek soru ��z�m�
+* Sait ORHAN'ın Udemy Platformundaki dersinde vermiş olduğu örnek soru çözümü
 
 START-OF-SELECTION.
-* Program �al##t###nda ilk olarak bu blok �al###r. Bu #ekilde girilen say#n#n do#rulu#unu ba#tan belirlemi# oluruz.
+* Program çalıştığında ilk olarak bu blok çalışır. Bu şekilde girilen sayının doğruluğunu baştan belirlemiş oluruz.
 IF gp_sayi lt 1..
-* E#er say# 1'den k���k ise a#a##daki i#lemi yap. ( lt, Less Than ifadesinin k#salt#m#d#r.)
-MESSAGE 'Say# 1''den k���k olamaz.' TYPE 'S' DISPLAY LIKE 'E'.
-* Ekrana mesaj yaz. Tipi S ( Ba#ar#l# mesaj tipi). Display Like 'E' ile Error (Hata) mesaj# g�r�n�m�nde olsun.
+* Eğer sayı 1'den küçük ise aşağıdaki işlemi yap. ( lt, Less Than ifadesinin kısaltımıdır.)
+MESSAGE 'Sayı 1''den küçük olamaz.' TYPE 'S' DISPLAY LIKE 'E'.
+* Ekrana mesaj yaz. Tipi S ( Başarılı mesaj tipi). Display Like 'E' ile Error (Hata) mesajı görünümünde olsun.
 LEAVE LIST-PROCESSING.
-* D�ng�den �#kar.
+* Döngüden çıkar.
 ENDIF.
 END-OF-SELECTION.
 
 gv_sonuc = 1.
-*Yukar#da de#i#ken tan#mlar# ile ilk �rnekteki i#lemin kar##mamas# i�in sonucu tekrar 1'e ald#k.
+*Yukarıda değişken tanımları ile ilk örnekteki işlemin karışmaması için sonucu tekrar 1'e aldık.
 
 DO gp_sayi TIMES.
-* gp_sayi de#eri kadar d�ng�ye gir ve a#a##daki i#lemi yap.
+* gp_sayi de#eri kadar döngüye gir ve aşağıdaki işlemi yap.
 gv_sonuc = gv_sonuc * sy-index.
-* sonuc ile index say#s#n# �arp. (#ndex say#s# 1'den d�ng�deki i#lem say#s# kadar olaca## i�in saya� ile ayn# mant#kta �al##acakt#r.)
+* sonuc ile index sayısını çarp. (index sayısı 1'den döngüdeki işlem sayısı kadar olacağı için sayaç ile aynı mantıkta çalışacaktır.)
 ENDDO.
 
-WRITE: / gp_sayi, 'Fakt�riyelin sonucu : ', gv_sonuc.
-* Say# ve i#lem sonucunu ekrana yaz.
+WRITE: / gp_sayi, 'Faktöriyelin sonucu : ', gv_sonuc.
+* Sayı ve işlem sonucunu ekrana yaz.
