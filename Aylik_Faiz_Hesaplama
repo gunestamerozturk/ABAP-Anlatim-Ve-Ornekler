@@ -1,0 +1,35 @@
+*&---------------------------------------------------------------------*
+*& Report Z_FAIZ_HESAPLAMA
+*&---------------------------------------------------------------------*
+*& Kullan#c#n#n belirledi#i anapara, oran ve aya göre faiz hesaplayan program
+*&---------------------------------------------------------------------*
+REPORT Z_US_ALMA.
+
+PARAMETERS: p_para TYPE i OBLIGATORY,
+            p_faizYz TYPE p DECIMALS 2 OBLIGATORY,
+            p_ay TYPE i OBLIGATORY.
+
+DATA: gv_sonuc TYPE p DECIMALS 2,
+      gv_toplam TYPE p DECIMALS 2.
+
+START-OF-SELECTION.
+IF p_para <= 0 OR p_faizYz LT 0 OR p_ay LT 1.
+MESSAGE 'Lütfen de#erlerin pozitif oldu#una ve ay say#s#n#n en az 1 oldu#una dikkat ediniz.' TYPE 'S' DISPLAY LIKE 'E'.
+LEAVE LIST-PROCESSING.
+ENDIF.
+END-OF-SELECTION.
+
+
+WRITE: 'Ba#lang#ç Tutar# : ', p_para, / 'Faiz Yüzdesi : ', p_faizYz, / 'Toplam Ay Say#s# : ', p_ay.
+
+DO p_ay TIMES.
+gv_sonuc = ( p_para * p_faizYz * sy-INDEX ) / 1200.
+gv_toplam = p_para + gv_sonuc.
+
+SKIP.
+ULINE.
+SKIP.
+
+WRITE: 'Ay : ', sy-INDEX, / 'Faiz : ', gv_sonuc, / 'Toplam Tutar : ', gv_toplam.
+
+ENDDO.
