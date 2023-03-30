@@ -1,7 +1,7 @@
 *&---------------------------------------------------------------------*
 *& Report Z_FAIZ_HESAPLAMA
 *&---------------------------------------------------------------------*
-*& Kullan#c#n#n belirledi#i anapara, oran ve aya g�re faiz hesaplayan program
+*& Kullanıcının belirlediği anapara, oran ve aya göre faiz hesaplayan program
 *&---------------------------------------------------------------------*
 REPORT Z_US_ALMA.
 
@@ -14,13 +14,13 @@ DATA: gv_sonuc TYPE p DECIMALS 2,
 
 START-OF-SELECTION.
 IF p_para <= 0 OR p_faizYz LT 0 OR p_ay LT 1.
-MESSAGE 'L�tfen de#erlerin pozitif oldu#una ve ay say#s#n#n en az 1 oldu#una dikkat ediniz.' TYPE 'S' DISPLAY LIKE 'E'.
+MESSAGE 'Lütfen değerlerin pozitif olduğuna ve ay sayısının en az 1 olduğuna dikkat ediniz.' TYPE 'S' DISPLAY LIKE 'E'.
 LEAVE LIST-PROCESSING.
 ENDIF.
 END-OF-SELECTION.
 
 
-WRITE: 'Ba#lang#� Tutar# : ', p_para, / 'Faiz Y�zdesi : ', p_faizYz, / 'Toplam Ay Say#s# : ', p_ay.
+WRITE: 'Başlangıç Tutarı : ', p_para, / 'Faiz Yüzdesi : ', p_faizYz, / 'Toplam Ay Sayısı : ', p_ay.
 
 DO p_ay TIMES.
 gv_sonuc = ( p_para * p_faizYz * sy-INDEX ) / 1200.
