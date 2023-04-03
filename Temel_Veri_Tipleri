@@ -1,7 +1,7 @@
 *&---------------------------------------------------------------------*
 *& Report Z_VERITIPLERI
 *&---------------------------------------------------------------------*
-*& ABAP Dilinde Temel Veri Tipleri ve Kullanımları
+*& ABAP Dilinde Temel Veri Tipleri ve KullanÄ±mlarÄ±
 *&---------------------------------------------------------------------*
 REPORT Z_VERITIPLERI.
 
@@ -9,51 +9,51 @@ REPORT Z_VERITIPLERI.
 * Integer, Packaged Number, Numerical Character, Char, String, Date, Time
 
 * Integer ( I );
-* Tamsayı değişkenlerini tutar.
+* TamsayÄ± deÄŸiÅŸkenlerini tutar.
 DATA gv_int TYPE I.
 gv_int = 25.
-WRITE: /'Tam sayı değişkeninin değeri : ', gv_int.
+WRITE: /'Tam sayÄ± deÄŸiÅŸkeninin deÄŸeri : ', gv_int.
 
 
 * Packaget Number ( P );
-* Ondalıklı sayı değişkenlerini tutar ve Virgülden sonra kaç basamak olacağını yazılımcı belirler.
+* OndalÄ±klÄ± sayÄ± deÄŸiÅŸkenlerini tutar ve VirgÃ¼lden sonra kaÃ§ basamak olacaÄŸÄ±nÄ± yazÄ±lÄ±mcÄ± belirler.
 DATA gv_pnumber TYPE P DECIMALS 3.
 gv_pnumber = '33.333999'.
-WRITE: /'Ondalıklı sayı değişkeninin değeri (Packaged) : ', gv_pnumber.
-* virgülden sonra 6 basamaklı sayı girdiğimiz halde 3 basamağa yuvarladı.
+WRITE: /'OndalÄ±klÄ± sayÄ± deÄŸiÅŸkeninin deÄŸeri (Packaged) : ', gv_pnumber.
+* virgÃ¼lden sonra 6 basamaklÄ± sayÄ± girdiÄŸimiz halde 3 basamaÄŸa yuvarladÄ±.
 
 
 * Numerical Character ( N );
-* Nümerik karakter değişkenlerini tutar ve karakter uzunluğu yazılımcı tarafından belirlenir.
+* NÃ¼merik karakter deÄŸiÅŸkenlerini tutar ve karakter uzunluÄŸu yazÄ±lÄ±mcÄ± tarafÄ±ndan belirlenir.
 DATA gv_numeric TYPE N LENGTH 5.
 gv_numeric = 258.
-WRITE: /'Numerik karakter değişkeninin değeri : ', gv_numeric.
-* 258 değerini girdiğimiz halde uzunluk 5 olduğu için başına 2 tane 0 koyarak 5 karakterli sonuç döndürdü.
+WRITE: /'Numerik karakter deÄŸiÅŸkeninin deÄŸeri : ', gv_numeric.
+* 258 deÄŸerini girdiÄŸimiz halde uzunluk 5 olduÄŸu iÃ§in baÅŸÄ±na 2 tane 0 koyarak 5 karakterli sonuÃ§ dÃ¶ndÃ¼rdÃ¼.
 
 
 * Char ( C );
-* Karakter değişkenlerini tutar. Uzunluğu yazılımcı tarafından belirlenir.
+* Karakter deÄŸiÅŸkenlerini tutar. UzunluÄŸu yazÄ±lÄ±mcÄ± tarafÄ±ndan belirlenir.
 DATA gv_char TYPE C LENGTH 2.
 gv_char = 'AA'.
-WRITE: /'Karakter değişkeninin değeri : ', gv_char.
+WRITE: /'Karakter deÄŸiÅŸkeninin deÄŸeri : ', gv_char.
 
 
 * String ( STRING );
-* Metin değişkenlerini tutar.
+* Metin deÄŸiÅŸkenlerini tutar.
 DATA gv_string TYPE STRING.
-gv_string = 'Merhaba, nasılsınız? Umarım iyisinizdir.'.
-WRITE: /'Metin değişkeninin değeri : ', gv_string.
+gv_string = 'Merhaba, nasÄ±lsÄ±nÄ±z? UmarÄ±m iyisinizdir.'.
+WRITE: /'Metin deÄŸiÅŸkeninin deÄŸeri : ', gv_string.
 
 
 * Date ( D );
-* Tarih değişkenlerini tutar. YYYYAAGG (Yıl/Ay/Gün) Formatında tanımlanır.
+* Tarih deÄŸiÅŸkenlerini tutar. YYYYAAGG (YÄ±l/Ay/GÃ¼n) FormatÄ±nda tanÄ±mlanÄ±r.
 DATA gv_date TYPE D.
 gv_date = '20230425'.
-WRITE: /'Tarih değişkeninin değeri : ', gv_date.
+WRITE: /'Tarih deÄŸiÅŸkeninin deÄŸeri : ', gv_date.
 
 
 * Time ( T );
-* Zaman değişkenlerini tutar. SSDDSS (Saat/Dakika/Saniye) Formatındadır.
+* Zaman deÄŸiÅŸkenlerini tutar. SSDDSS (Saat/Dakika/Saniye) FormatÄ±ndadÄ±r.
 DATA gv_time TYPE T.
 gv_time = '123059'.
-WRITE: /'Zaman değişkeninin değeri : ', gv_time.
+WRITE: /'Zaman deÄŸiÅŸkeninin deÄŸeri : ', gv_time.
