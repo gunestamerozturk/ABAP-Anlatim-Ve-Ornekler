@@ -1,0 +1,59 @@
+*&---------------------------------------------------------------------*
+*& Report Z_VERITIPLERI
+*&---------------------------------------------------------------------*
+*& ABAP Dilinde Temel Veri Tipleri ve Kullanýmlarý
+*&---------------------------------------------------------------------*
+REPORT Z_VERITIPLERI.
+
+* Veri tipleri
+* Integer, Packaged Number, Numerical Character, Char, String, Date, Time
+
+* Integer ( I );
+* Tamsayý deðiþkenlerini tutar.
+DATA gv_int TYPE I.
+gv_int = 25.
+WRITE: /'Tam sayý deðiþkeninin deðeri : ', gv_int.
+
+
+* Packaget Number ( P );
+* Ondalýklý sayý deðiþkenlerini tutar ve Virgülden sonra kaç basamak olacaðýný yazýlýmcý belirler.
+DATA gv_pnumber TYPE P DECIMALS 3.
+gv_pnumber = '33.333999'.
+WRITE: /'Ondalýklý sayý deðiþkeninin deðeri (Packaged) : ', gv_pnumber.
+* virgülden sonra 6 basamaklý sayý girdiðimiz halde 3 basamaða yuvarladý.
+
+
+* Numerical Character ( N );
+* Nümerik karakter deðiþkenlerini tutar ve karakter uzunluðu yazýlýmcý tarafýndan belirlenir.
+DATA gv_numeric TYPE N LENGTH 5.
+gv_numeric = 258.
+WRITE: /'Numerik karakter deðiþkeninin deðeri : ', gv_numeric.
+* 258 deðerini girdiðimiz halde uzunluk 5 olduðu için baþýna 2 tane 0 koyarak 5 karakterli sonuç döndürdü.
+
+
+* Char ( C );
+* Karakter deðiþkenlerini tutar. Uzunluðu yazýlýmcý tarafýndan belirlenir.
+DATA gv_char TYPE C LENGTH 2.
+gv_char = 'AA'.
+WRITE: /'Karakter deðiþkeninin deðeri : ', gv_char.
+
+
+* String ( STRING );
+* Metin deðiþkenlerini tutar.
+DATA gv_string TYPE STRING.
+gv_string = 'Merhaba, nasýlsýnýz? Umarým iyisinizdir.'.
+WRITE: /'Metin deðiþkeninin deðeri : ', gv_string.
+
+
+* Date ( D );
+* Tarih deðiþkenlerini tutar. YYYYAAGG (Yýl/Ay/Gün) Formatýnda tanýmlanýr.
+DATA gv_date TYPE D.
+gv_date = '20230425'.
+WRITE: /'Tarih deðiþkeninin deðeri : ', gv_date.
+
+
+* Time ( T );
+* Zaman deðiþkenlerini tutar. SSDDSS (Saat/Dakika/Saniye) Formatýndadýr.
+DATA gv_time TYPE T.
+gv_time = '123059'.
+WRITE: /'Zaman deðiþkeninin deðeri : ', gv_time.
