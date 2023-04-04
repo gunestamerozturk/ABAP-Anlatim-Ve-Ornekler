@@ -1,0 +1,54 @@
+*&---------------------------------------------------------------------*
+*& Report Z_KARSILASTIRMA_OPERATORLERI
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT z_karsilastirma_operatorleri.
+
+* Karşılaştırma operatörleri koşul ve döngülerde sıklıkla kullanılırlar.
+* İki sayının karşılaştırılmasını yapan program ile örneklendirmeye çalışalım.
+
+PARAMETERS: p_sayi1 TYPE i OBLIGATORY,
+            p_sayi2 TYPE i OBLIGATORY.
+
+* Büyük ( > , gt )
+* (Büyüktür işareti yerine 'Greater Than' kısaltması 'gt' yazılabilir.)
+IF p_sayi1 gt p_sayi2.
+SKIP.
+WRITE: p_sayi1, 'Büyüktür', p_sayi2.
+ENDIF.
+
+* Büyük veya Eşit ( >= , ge )
+* (Büyük veya Eşit işareti yerine 'Greater Equal' kısaltması 'ge' yazılabilir.)
+IF p_sayi1 ge p_sayi2.
+SKIP.
+WRITE: p_sayi1, 'Büyüktür veya Eşittir', p_sayi2.
+ENDIF.
+
+* Küçük ( < , lt )
+* (Küçüktür işareti yerine 'Less Than' kısaltması 'lt' yazılabilir.)
+IF p_sayi1 lt p_sayi2.
+SKIP.
+WRITE: p_sayi1, 'Küçüktür', p_sayi2.
+ENDIF.
+
+* Küçük veya Eşit ( <= , le )
+* (Küçük veya Eşit işareti yerine 'Less Equal' kısaltması 'le' yazılabilir.)
+IF p_sayi1 le p_sayi2.
+SKIP.
+WRITE: p_sayi1, 'Küçüktür veya Eşittir', p_sayi2.
+ENDIF.
+
+* Eşit ( = , eq )
+* (Eşittir işareti yerine 'Equal' kısaltması 'eq' yazılabilir.)
+IF p_sayi1 eq p_sayi2.
+SKIP.
+WRITE: p_sayi1, 'Eşittir', p_sayi2.
+ENDIF.
+
+* Eşit Değil ( <> , ne )
+* (Eşit Değil işareti yerine 'Not Equal' kısaltması 'ne' veya yazılabilir.)
+IF p_sayi1 ne p_sayi2.
+SKIP.
+WRITE: p_sayi1, 'Eşit Değildir', p_sayi2.
+ENDIF.
