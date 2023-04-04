@@ -1,0 +1,67 @@
+*&---------------------------------------------------------------------*
+*& Report Z_ARITMETIK_OPERATORLER
+*&---------------------------------------------------------------------*
+*& Toplama - Çıkarma - Çarpma - Bölme - Üs - Mod
+*&---------------------------------------------------------------------*
+REPORT Z_ARITMETIK_OPERATORLER.
+
+DATA: gv_sayi1 TYPE I VALUE 10,
+      gv_sayi2 TYPE I VALUE 3,
+      gv_sonuc TYPE P DECIMALS 2.
+
+SKIP.
+WRITE: '1. Sayı : ', gv_sayi1, / '2. Sayı : ',gv_sayi2.
+SKIP.
+ULINE.
+SKIP.
+
+
+* Toplama ( + )
+* İki değeri toplar.
+gv_sonuc = gv_sayi1 + gv_sayi2.
+WRITE: / 'Toplama işleminin sonucu : ', gv_sonuc.
+
+SKIP.
+
+* Çıkarma ( - )
+* Operatöre göre soldaki değerden sağdaki değeri çıkarır.
+gv_sonuc = gv_sayi1 - gv_sayi2.
+WRITE: / 'Çıkarma işleminin sonucu : ', gv_sonuc.
+
+SKIP.
+
+* Çarpma ( * )
+* İki değeri çarpar.
+gv_sonuc = gv_sayi1 * gv_sayi2.
+WRITE: / 'Çarpma işleminin sonucu : ', gv_sonuc.
+
+SKIP.
+
+* Bölme ( / )
+* Operatöre göre sağdaki değeri soldaki değere böler.
+gv_sonuc = gv_sayi1 / gv_sayi2.
+WRITE: / 'Bölme işleminin sonucu : ', gv_sonuc.
+
+SKIP.
+
+* Kalansız Bölme ( DIV )
+* Operatöre göre sağdaki değeri soldaki değere böler.
+* Sonuç tam sayıdır.
+gv_sonuc = gv_sayi1 DIV gv_sayi2.
+WRITE: / 'Bölme işleminin sonucu (Kalansız) : ', gv_sonuc.
+
+SKIP.
+
+* Üs Alma ( ** )
+* Operatöre göre soldaki seğerin sağdaki değerdeki kuvvetini alır.
+gv_sonuc = gv_sayi1 ** gv_sayi2.
+WRITE: / 'Üs alma işleminin sonucu : ', gv_sonuc.
+
+SKIP.
+
+* Mod Alma ( MOD )
+* Operatöre göre sağdaki değerin soldaki değere göre modunu alır.
+gv_sonuc = gv_sayi1 MOD gv_sayi2.
+WRITE: / 'Mod alma işleminin sonucu : ', gv_sonuc.
+
+SKIP.
