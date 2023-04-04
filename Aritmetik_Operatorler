@@ -38,14 +38,14 @@ WRITE: / 'Çarpma işleminin sonucu : ', gv_sonuc.
 SKIP.
 
 * Bölme ( / )
-* Operatöre göre sağdaki değeri soldaki değere böler.
+* Operatöre göre soldaki değeri sağdaki değere böler.
 gv_sonuc = gv_sayi1 / gv_sayi2.
 WRITE: / 'Bölme işleminin sonucu : ', gv_sonuc.
 
 SKIP.
 
 * Kalansız Bölme ( DIV )
-* Operatöre göre sağdaki değeri soldaki değere böler.
+* Operatöre göre soldaki değeri sağdaki değere böler.
 * Sonuç tam sayıdır.
 gv_sonuc = gv_sayi1 DIV gv_sayi2.
 WRITE: / 'Bölme işleminin sonucu (Kalansız) : ', gv_sonuc.
@@ -60,7 +60,7 @@ WRITE: / 'Üs alma işleminin sonucu : ', gv_sonuc.
 SKIP.
 
 * Mod Alma ( MOD )
-* Operatöre göre sağdaki değerin soldaki değere göre modunu alır.
+* Operatöre göre soldaki değerin sağdaki değere göre modunu alır.
 gv_sonuc = gv_sayi1 MOD gv_sayi2.
 WRITE: / 'Mod alma işleminin sonucu : ', gv_sonuc.
 
