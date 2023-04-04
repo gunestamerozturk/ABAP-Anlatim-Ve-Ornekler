@@ -1,0 +1,59 @@
+*&---------------------------------------------------------------------*
+*& Report Z_KARAKTER_OPERATORLERI
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT Z_KARAKTER_OPERATORLERI.
+
+* Metin operatörlerinde metin değerlerini karşılaştırabilir ve buna göre işlemler yapabiliriz.
+* İki metnin karşılaştırmasını yapan program ile örneklendirmeye çalışalım.
+
+PARAMETERS: p_metin1 TYPE string OBLIGATORY,
+            p_metin2 TYPE string OBLIGATORY.
+
+
+SKIP.
+WRITE: '1.Metin : ', p_metin1, /'2.Metin : ', p_metin2.
+SKIP.
+ULINE.
+SKIP.
+
+* Contains Only ( CO )( 1.Metin sadece 2.Metindeki karakterleri içerir )
+IF p_metin1 CO p_metin2.
+WRITE:/ '1.Metin sadece 2.Metindeki karakterleri içerir'.
+ENDIF.
+
+* Not Contains Only ( CN )( 1.Metin sadece 2.Metindeki karakterleri içermez )
+IF p_metin1 CN p_metin2.
+WRITE:/ '1.Metin sadece 2.Metindeki karakterleri içermez'.
+ENDIF.
+
+* Contains Any ( CA )( 1.Metin, 2.Metinden en az bir karakter içerir )
+IF p_metin1 CA p_metin2.
+WRITE:/ '1.Metin, 2.Metinden en az bir karakter içerir'.
+ENDIF.
+
+* Not Contains Any ( NA )( 1.Metin, 2.Metinden hiçbir karakter içermez )
+IF p_metin1 NA p_metin2.
+WRITE:/ '1.Metin, 2.Metinden hiçbir karakter içermez'.
+ENDIF.
+
+* Contains a String ( CS )( 1.Metin, 2.Metinden oluşur )
+IF p_metin1 CS p_metin2.
+WRITE:/ '1.Metin, 2.Metinden oluşur'.
+ENDIF.
+
+* Not Contains a String ( NS )( 1.Metin, 2.Metinden oluşmaz )
+IF p_metin1 NS p_metin2.
+WRITE:/ '1.Metin, 2.Metinden oluşmaz'.
+ENDIF.
+
+* Contains a Pattern ( CP )( 1.Metin, 2.Metinden bir desen içerir )
+IF p_metin1 CP p_metin2.
+WRITE:/ '1.Metin, 2.Metinden bir desen içerir'.
+ENDIF.
+
+* Not Contains a Pattern ( NP )( 1.Metin2, 2.Metinden bir desen içermez )
+IF p_metin1 NP p_metin2.
+WRITE:/ '1.Metin2, 2.Metinden bir desen içermez'.
+ENDIF.
