@@ -1,0 +1,151 @@
+*&---------------------------------------------------------------------*
+*& Report Z_STRING_FONKSIYONLAR
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT Z_STRING_FONKSIYONLAR.
+
+* Metin değişkenleri üzerinde düzenlemeler veya farklı işlemler yapmak için bazı fonksiyonları kullanırız.
+
+PARAMETERS: p_metin1 TYPE string,
+            p_metin2 TYPE string.
+
+DATA      gv_metin3 TYPE string.
+
+WRITE: / '1. Metin : ', p_metin1, / '2.Metin : ', p_metin2.
+SKIP.
+ULINE.
+WRITE 'CONCATENATE'.
+SKIP.
+
+* CONCATENATE
+* Farklı metin değişken değerlerini birleştirir.
+CONCATENATE p_metin1 p_metin2 INTO gv_metin3 SEPARATED BY SPACE. "SEPERATED BY ile değişkenleri ayırmak için araya karakter ekleyebiliriz.
+WRITE: 'CONCATENATE ile birleştirilmiş metin ;', / gv_metin3.
+
+SKIP.
+ULINE.
+WRITE 'CONDENSE'.
+SKIP.
+
+* CONDENSE ... NO-GAPS
+* Değişken içerisindeki boşlukları kaldırır.
+CONDENSE gv_metin3 NO-GAPS.
+WRITE: 'CONDENSE ile boşlukları silinmiş metin ;', / gv_metin3.
+
+SKIP.
+ULINE.
+WRITE 'STRLEN'.
+SKIP.
+
+* STRLEN
+* Metnin uzunluğunu hesaplayan fonksiyondur.
+DATA gv_uzunluk TYPE I.
+gv_uzunluk = strlen( p_metin1 ) + strlen( p_metin2 ).
+WRITE: 'Girilen metinlerin toplam uzunluğu : ', gv_uzunluk.
+
+SKIP.
+ULINE.
+WRITE 'REPLACE'.
+SKIP.
+
+* REPLACE
+* Metin içerisindeki karakterin veya metnin yerine farklı bir karakter veya metin eklemek için kullanılır.
+* Veritabanı tablolarındaki düzeltmelerde veya raporlamalarda sıklıkla karşılaşabiliriz.
+
+CONCATENATE p_metin1 p_metin2 INTO gv_metin3 SEPARATED BY space.
+WRITE: 'Replace öncesi : ', gv_metin3.
+*Türkçe karakter kullanılamayan bir durumda isim ve soyisim verilerinin uygun formata çevrilerek raporlandığı senaryosunu deneyelim.
+REPLACE 'Ç' WITH 'C' INTO gv_metin3.
+REPLACE 'Ğ' WITH 'G' INTO gv_metin3.
+REPLACE 'İ' WITH 'I' INTO gv_metin3.
+REPLACE 'Ö' WITH 'O' INTO gv_metin3.
+REPLACE 'Ş' WITH 'S' INTO gv_metin3.
+REPLACE ALL OCCURRENCES OF 'Ü' IN gv_metin3 WITH 'U'.
+WRITE: /'Replace sonrası : ', gv_metin3.
+
+SKIP.
+ULINE.
+WRITE 'SEARCH'.
+SKIP.
+
+* SEARCH
+* Metnin içinde başka bir metni arar.
+DATA lv_pos TYPE I.
+SEARCH gv_metin3 FOR 'TURK'.
+lv_pos = sy-fdpos. "sy-fdpos aranan değerin kaçıncı basamaktan itibaren bulunduğu bilgisini sayısal olarak verir.
+WRITE:/ '''TURK'' ifadesinin bulunduğu konum : ', lv_pos.
+
+SKIP.
+ULINE.
+WRITE 'SHIFT'.
+SKIP.
+
+* SHIFT
+* Metin değeri üzerinde kaydırmalar yapar.
+DATA: lv_shift TYPE string VALUE '000202345'.
+WRITE: 'Shift değişken değeri : ', lv_shift.
+SHIFT lv_shift BY 5 PLACES. "Değişkenin tamamını belirtilen değer kadar sola kaydırır, baştaki belirtilen değer kadar basamağı siler.
+WRITE: /'Sola 5 basamak kaydırılmış hali :', lv_shift.
+
+lv_shift = '000202345'.
+SHIFT lv_shift UP TO '3' RIGHT CIRCULAR. "Değişken değerinde belirtilen değerden itibaren sağa kaydırır. Değişkenin sağında kalanlar başa gelir.
+WRITE: /'3''ten itibaren sağa kaydırılmış hali : ', lv_shift.
+
+lv_shift = '000202345'.
+SHIFT lv_shift UP TO '3' LEFT CIRCULAR. "Değişken değerinde belirtilen değerden itibaren sola kaydırır. Değişkenin solunda kalanlar sona gelir.
+WRITE: /'3''ten itibaren sola kaydırılmış hali : ', lv_shift.
+
+lv_shift = '000202345'.
+SHIFT lv_shift LEFT DELETING LEADING '0'. "Değişkenin başındaki belirtilen karakterin tekrar edenleri siler.
+WRITE: /'Baştaki sıfırlar silinmiş hali : ', lv_shift.
+
+lv_shift = '202345000'.
+SHIFT lv_shift RIGHT DELETING TRAILING '0'.
+WRITE: /'Sondaki sıfırlar silinmiş hali : ', lv_shift. "Değişkenin sonundaki belirtilen karakterin tekrar edenleri siler ve metni sağa kaydırır.
+
+SKIP.
+ULINE.
+WRITE 'SPLIT'.
+SKIP.
+
+* SPLIT
+* Metin değişkenini belirlenen karakter ile parçalar.
+* Forumlarda veya web uygulamaları yönetirken karşılaşabileceğimiz sayfa etiketlerini virgül ile ayırdığımız senaryoyu örneklendirelim.
+DATA: lv_split TYPE string VALUE 'ABAP,SAP,EĞİTİM,SAP ABAP,SAP EĞİTİMİ,ABAP EĞİTİMİ,SAP ABAP EĞİTİMİ',
+      lt_split LIKE TABLE OF lv_split.
+SPLIT lv_split AT ',' INTO TABLE lt_split.
+WRITE 'Metnin parçalanmış hali : '.
+LOOP AT lt_split INTO lv_split.
+WRITE: / lv_split.
+ENDLOOP.
+
+SKIP.
+ULINE.
+WRITE 'TRANSLATE'.
+SKIP.
+
+* TRANSLATE
+* Değişken değerini değiştirmeye yarar. Bir kelime yerine farklı bir kelime veya büyük küçük harf değişimleri gibi düşünebiliriz.
+TRANSLATE p_metin1 USING ' -'. "tırnak içerisinde girilen ilk karakter yerine ikinci karakteri koyar. (Boşluk yerine tire koyduk)
+WRITE: / '1.Metnin boşluk yerine ''-'' ile ayrılmış hali : ', p_metin1.
+
+TRANSLATE p_metin2 TO LOWER CASE.
+WRITE: / '2.Metnin küçük harfe dönüştürüşmüş hali : ', p_metin2.
+
+TRANSLATE p_metin2 TO UPPER CASE.
+WRITE: / '2.Metnin büyük harfe dönüştürüşmüş hali : ', p_metin2.
+
+SKIP.
+ULINE.
+WRITE 'SUBSTRING'.
+SKIP.
+
+* SUBSTRING
+* Metnin belirli bir bölümünü alır.
+DATA: lv_substr1 TYPE string,
+      lv_substr2 TYPE string.
+lv_substr1 = p_metin1(5). " Parantez içerisindeki değer metnin ilk beş karakteri almamızı sağlar.
+lv_substr2 = p_metin2+3(2). " +3 ifadesi ile üçüncü basamaktan itibaren parantez içerisindeki değer kadar karakteri almamızı sağlar.
+WRITE: / 'metin1(5) :', lv_substr1.
+WRITE: / 'metin2+3(5) : ', lv_substr2.
