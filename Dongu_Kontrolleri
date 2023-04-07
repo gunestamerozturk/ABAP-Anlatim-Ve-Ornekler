@@ -1,0 +1,43 @@
+*&---------------------------------------------------------------------*
+*& Report Z_DONGU_KONTROLLERI
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT z_dongu_kontrolleri.
+
+* Continue
+* Şartın sağlandığı durumda işlem yapılmaz ve sonraki adıma geçilir.
+* 1'den 100'e kadar çift sayıları bulan örnek ile pekiştirelim.
+DO 100 TIMES.
+  IF sy-index MOD 2 <> 0.
+    CONTINUE. " sy-index mod 2 ne 0 şartının sağlandığı durumda devreye girer.
+  ELSE.
+    WRITE: / sy-index. " Yukarıdaki şartın sağlanmaması durumunda işleme girer.
+  ENDIF.
+ENDDO.
+
+SKIP.
+ULINE.
+SKIP.
+
+* Check
+* Koşulun sağlanması durumunda işlem yapılır ve sonraki adıma geçilir.
+* 1-100 arası 5'e tam bölünemeyen çift sayıları bulan örnek ile pekiştirelim
+DO 100 TIMES.
+  CHECK sy-index MOD 5 NE 0 AND sy-index MOD 2 EQ 0.
+  WRITE: sy-index.
+ENDDO.
+
+SKIP.
+ULINE.
+SKIP.
+
+* Exit
+* Koşulun sağlanması durumunda döngüden tamamen çıkar
+DO 10 TIMES.
+  WRITE: / sy-index.
+  IF sy-index = 5.
+    EXIT. " Döngüyü 10'a kadar saydırdık fakat sayı 5 olduğunda exit komutunu verdiğimiz için 5'i yazdıktan sonra duracaktır.
+  ENDIF.
+ENDDO.
+
